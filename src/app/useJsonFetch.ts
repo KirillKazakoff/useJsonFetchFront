@@ -12,13 +12,13 @@ const useJsonFetch = (url: string, options: any) => {
             const response = await fetch(url, options);
             const jsonData = await response.json();
 
+            setLoading(false);
             if (jsonData.error) {
                 setError(jsonData.status);
                 return;
             }
 
             setData(jsonData.data);
-            setLoading(false);
         };
 
         if (url) fetchFunc();
